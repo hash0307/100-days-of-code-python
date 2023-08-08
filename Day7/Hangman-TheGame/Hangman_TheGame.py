@@ -30,6 +30,7 @@ while game:
                     user_guess[count] = game_word[count]
                 count += 1
             print(user_guess)
+            print(template_list[hangman_count])
         else:
             hangman_count += 1
             print(f"Incorrect Guess #{hangman_count}. Please Try again.")
