@@ -10,13 +10,21 @@ def caesar(text, shift, direction):
             if direction == "encode":
                 encrypt_index = alphabet.index(letter) + shift
                 if encrypt_index >= len(alphabet):
-                    cipher_text += alphabet[encrypt_index - len(alphabet)]
+                    encrypt_index = encrypt_index - len(alphabet)
+                    while encrypt_index >= len(alphabet):
+                        encrypt_index = encrypt_index - len(alphabet)
+                    # cipher_text += alphabet[encrypt_index - len(alphencodeabet)]
+                    cipher_text += alphabet[encrypt_index]
                 else:
                     cipher_text += alphabet[encrypt_index]
             elif direction == "decode":
                 decrypt_index = alphabet.index(letter) - shift
                 if decrypt_index < 0:
-                    cipher_text += alphabet[len(alphabet) + decrypt_index]
+                    decrypt_index = len(alphabet) + decrypt_index
+                    while decrypt_index < 0:
+                        decrypt_index = len(alphabet) + decrypt_index
+                    # cipher_text += alphabet[len(alphabet) + decrypt_index]
+                    cipher_text += alphabet[decrypt_index]
                 else:
                     cipher_text += alphabet[decrypt_index]
         else:
