@@ -40,12 +40,14 @@ def calculator():
     num2 = float(input("What's the second number?: "))
     answer = operations[operation_symbol](num1, num2)
     print(f" {num1} {operation_symbol} {num2} = {answer}")
-  
-    if input(f"Type 'y' to continue calculating with {answer} , or type 'n' to start a new calcualtion: ") == "y":
+    choice = input(f"Type 'y' to continue calculating with {answer} , or type 'n' to start a new calcualtion, or type 'exit' to end: ").lower()
+    if choice == "y":
       num1 = answer
+    elif choice == 'n':
+      should_continue = False
+      calculator() # Recurssion - Function calling itself
     else:
       should_continue = False
-      calculator() # Recurssion
 
 calculator()
 
