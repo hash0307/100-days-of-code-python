@@ -6,25 +6,34 @@
 # If they got the answer correct, show the actual answer to the player.
 # Track the number of turns remaining.
 # If they run out of turns, provide feedback to the player. 
-# Include two different difficulty levels (e.g., 10 guesses in easy mode, only 5 guesses in hard mode).
+# Include different difficulty levels (e.g., 10 guesses in easy mode, only 5 guesses in hard mode).
 
 from art import logo, congrats, thanks
-import random
+from random import randint
 import os
 
+# GLOBAL CONSTANTS
+HARD_LEVEL_ATTEMPTS = 5
+MEDIUM_LEVEL_ATTEMPTS = 7
+EASY_LEVEL_ATTEMPTS = 10
+
+
+# Function to set max attempts based on the difficulty selected.
 def set_attempts(difficulty_level):
     if difficulty_level == "hard":
-        return 5
+        return HARD_LEVEL_ATTEMPTS
     elif difficulty_level == "medium":
-        return 7
+        return MEDIUM_LEVEL_ATTEMPTS
     else:
-        return 10
+        return EASY_LEVEL_ATTEMPTS
 
 
+# Function to select the Game Number
 def set_game_number():
-    return random.randint(1, 100)
+    return randint(1, 100)
 
 
+# Function to check user's guess against the actual number
 def check_result(user_guess, game_number):
     if user_guess == game_number:
         print(congrats)  
@@ -64,6 +73,7 @@ while game_on:
 
         if attempts_left == 0:
             print(" UH-OHH !! YOU LOST.")
+            print(f" Correct Answer is: {game_number}")
 
     replay = input("\nDo you want to play again? Type 'y' to play or 'n' to exit: ")
     if replay == 'y':
