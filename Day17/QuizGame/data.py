@@ -23,15 +23,14 @@ response = requests.get('https://opentdb.com/api.php?amount=10&type=boolean')
 # print(response.json())
 
 if response.status_code == 200:
+    for result in response.json()['results']:
+        response_question = result['question']
+        response_answer = result['correct_answer']
+
+        question_item = {'text': response_question, 'answer': response_answer}
+        question_data.append(question_item)
     print("Request successful. Your questions for the Quiz are ready.")
 else:
     print(f"Request failed with status code: {response.status_code}")
-
-for result in response.json()['results']:
-    response_question = result['question']
-    response_answer = result['correct_answer']
-
-    question_item = {'text': response_question, 'answer': response_answer}
-    question_data.append(question_item)
 
 # print(question_data)
