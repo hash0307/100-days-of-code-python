@@ -2,14 +2,17 @@ from turtle import Turtle, Screen
 import random
 # timmy = Turtle(shape="turtle")
 screen = Screen()
-turtle_colors = ["Blue", "Light Green", "Yellow", "Orange", "Red", "Black"]
 screen.setup(width=500, height=400)
+screen.bgcolor("sea green")
+y_positions = [-100, -60, -20, 20, 60, 100]
+
+turtle_colors = ["Blue", "Light Green", "Yellow", "Orange", "Red", "Black"]
+all_turtles = []
+
+is_race_on = False
+
 user_bet = screen.textinput(title="Make your bet", prompt=f"Which turtle will win the race ? \n{turtle_colors}\n\nEnter a color: ")
 # print(user_bet)
-is_race_on = False
-y_positions = [-100, -60, -20, 20, 60, 100]
-all_turtles = []
-screen.bgcolor("sea green")
 
 # Creating multiple instances of turtle for the race
 for turtle_index in range(0, 6):
