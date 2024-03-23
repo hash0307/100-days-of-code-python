@@ -67,9 +67,4 @@ while is_game_on:
             score.game_over()
     
 
-
-
-
-
-
 screen.exitonclick()
