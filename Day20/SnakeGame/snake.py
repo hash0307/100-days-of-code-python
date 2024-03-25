@@ -24,6 +24,13 @@ class Snake:
             # self.snake_body.append(snake)
             self.add_snake_body(position)
 
+    def reset(self):
+        for body in self.snake_body:
+            body.goto(1000,1000) # Disappear snake off the screen when hits tail or wall
+        self.snake_body.clear()
+        self.create_snake()
+        self.head = self.snake_body[0]
+        
 
     def move(self):
         for body_part in range(len(self.snake_body)-1, 0, -1):
